@@ -32,13 +32,16 @@ span {
     display: block;
     /* margin: 0 10px 0 10px; */
 }
+.card {
+    border-radius: 20px 20px 20px 20px !important;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 0.2);
+    width: 500px;
+}
 .vl {
     border-left: 1px solid rgb(99, 103, 99);
     height: 600px;
     position: absolute;
     left: 50%;
-
-    /* top: 0; */
 }
 .aside {
     height: 90vh;
@@ -83,7 +86,7 @@ span {
     position: absolute;
     margin-left: 10px;
     right: -15px;
-    top: 10px;
+    top: -5px;
     width: 30px;
     height: 30px;
     /* float: right; */
@@ -101,10 +104,10 @@ span {
 .posts,
 .gallery,
 .todo {
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    vertical-align: middle;
 }
 
 .posts h1,
@@ -113,6 +116,7 @@ span {
     font-weight: 600;
     font-size: 5rem;
     color: rgb(206, 200, 200);
+    vertical-align: middle;
 }
 
 .active {
@@ -125,7 +129,7 @@ span {
     position: absolute;
     padding: 10px;
     top: 100px;
-    width: 400px !important;
+    width: 350px;
     background-color: #fff;
     border: 1px solid rgb(193, 186, 186);
     right: 300px;
