@@ -27,10 +27,10 @@ const LandingPage = () => {
                             className="card-body "
                             style={{ maxHeight: "300px", overflowY: "scroll" }}
                         >
-                            {users.map((user, index) => (
+                            {users.map((user) => (
                                 <>
                                     <Link
-                                        key={index}
+                                        key={user.id}
                                         className="d-flex  text-decoration-none text-black"
                                         to={`/${user.id}/profile`}
                                         state={{ user }}

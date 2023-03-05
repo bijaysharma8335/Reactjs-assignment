@@ -4,6 +4,7 @@ body {
         "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 code {
@@ -29,5 +30,106 @@ code {
 }
 span {
     display: block;
-    margin: 0 10px 0 10px;
+    /* margin: 0 10px 0 10px; */
+}
+.vl {
+    border-left: 1px solid rgb(99, 103, 99);
+    height: 600px;
+    position: absolute;
+    left: 50%;
+
+    /* top: 0; */
+}
+.aside {
+    height: 90vh;
+    background-color: #7d00d7;
+    color: #fff;
+    align-items: center;
+    border-radius: 25px;
+    width: 220px;
+    display: block;
+    width: 400px;
+    font-size: 30px;
+}
+.aside .aside-list > span {
+    /* display: flex; */
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0 20px 0 20px;
+}
+.aside div:nth-child(1) {
+    margin-top: 250px;
+}
+/* .aside span .icon {
+    align-content: flex-end;
+    right: 30px;
+    border: 0;
+    color: rgb(208, 14, 14) !important;
+    font-size: 30px;
+} */
+.cursor-pointer {
+    cursor: pointer;
+}
+/* .parentDiv {
+    display: block;
+    height: 110px;
+    width: 400px;
+    font-size: 30px;
+} */
+
+/* To set icon at the right side of the div*/
+.aside .aside-list .icon {
+    position: absolute;
+    margin-left: 10px;
+    right: -15px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    /* float: right; */
+    /* padding: 10px; */
+    border: 1px solid rgb(119, 115, 115);
+    border-radius: 50%;
+    background-color: #fff;
+    color: rgb(55, 51, 51) !important;
+    font-size: 20px;
+}
+.aside-list {
+    position: relative;
+}
+
+.posts,
+.gallery,
+.todo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.posts h1,
+.gallery h1,
+.todo h1 {
+    font-weight: 600;
+    font-size: 5rem;
+    color: rgb(206, 200, 200);
+}
+
+.active {
+    color: #fff;
+}
+.inactive {
+    color: rgb(186, 179, 179);
+}
+.profile-model {
+    position: absolute;
+    padding: 10px;
+    top: 100px;
+    width: 400px !important;
+    background-color: #fff;
+    border: 1px solid rgb(193, 186, 186);
+    right: 300px;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 0.2);
+    z-index: 1;
 }
