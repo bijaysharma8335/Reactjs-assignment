@@ -5,12 +5,10 @@ import ToDo from "./ToDo";
 import Posts from "./Posts";
 import Gallery from "./Gallery";
 import axios from "axios";
+import ChatWidget from "./ChatWidget";
 const ProfileHomePage = () => {
-
-
     const [users, setUsers] = useState([]);
 
-    
     const location = useLocation();
     const navigate = useNavigate();
     const [activeState, setActiveState] = useState("Profile");
@@ -18,11 +16,10 @@ const ProfileHomePage = () => {
 
     useEffect(() => {
         axios.get("https://panorbit.in/api/users.json").then((res) => {
-            console.log(res.data);
             setUsers(res.data.users);
         });
     }, []);
-    
+
     const handleSignOut = () => {
         navigate("/");
     };
@@ -92,7 +89,7 @@ const ProfileHomePage = () => {
                     <hr />
                 </div>
 
-                <div className="col-9">
+                <div className="col-9 aside-right">
                     <div>
                         <div className="d-flex justify-content-between">
                             <h4>{activeState}</h4>
@@ -128,7 +125,7 @@ const ProfileHomePage = () => {
                                     className="mx-2 "
                                 />
                                 <span className="fw-bold">{location.state.user.name}</span>
-                                <span className="text-secondary">{location.state.user.email}</span>
+                                <span className="">{location.state.user.email}</span>
                                 <hr />
 
                                 <button
@@ -142,7 +139,7 @@ const ProfileHomePage = () => {
                         <hr />
                         {activeState === "Profile" && (
                             <div className="row">
-                                <div className="col-6">
+                                <div className="col-6 text-center">
                                     <img
                                         src={location.state.user.profilepicture}
                                         alt=""
@@ -151,37 +148,39 @@ const ProfileHomePage = () => {
                                         style={{ borderRadius: "50%", objectFit: "cover" }}
                                         className="mx-auto"
                                     />
-                                    <h6 className="d-block mx-auto">{location.state.user.name}</h6>
+                                    <h5 className="d-block mx-auto my-2">
+                                        {location.state.user.name}
+                                    </h5>
                                     <span className="d-block ">
-                                        Username:<h6>{location.state.user.username}</h6>
+                                        Username:{location.state.user.username}
                                     </span>
                                     <span className="d-block ">
-                                        email:<h6>{location.state.user.email}</h6>
+                                        email:{location.state.user.email}
                                     </span>
                                     <span className="d-block ">
-                                        phone:<h6>{location.state.user.phone}</h6>
+                                        phone:{location.state.user.phone}
                                     </span>
                                     <span className="d-block ">
                                         website:
-                                        <h6 className="fw-bold">{location.state.user.website}</h6>
+                                        {location.state.user.website}
                                     </span>
                                     <hr />
                                     <h5>Company</h5>
                                     <span className="d-block ">
-                                        Name:<h6>{location.state.user.company.name}</h6>
+                                        Name:{location.state.user.company.name}
                                     </span>
                                     <span className="d-block ">
                                         catchPhrase:
-                                        <h6>{location.state.user.company.catchPhrase}</h6>
+                                        {location.state.user.company.catchPhrase}
                                     </span>
                                     <span className="d-block ">
-                                        bs:<h6>{location.state.user.company.bs}</h6>
+                                        bs:{location.state.user.company.bs}
                                     </span>
                                 </div>
                                 {/* <div className="vl"></div> */}
 
                                 <div className="col-5">
-                                    <span> Address:</span>
+                                    <span className="fw-bold text-secondary"> Address:</span>
                                     <span>
                                         street:<h6>{location.state.user.address.street}</h6>
                                     </span>
@@ -217,6 +216,7 @@ const ProfileHomePage = () => {
                     {activeState === "Gallery" && <Gallery />}
                 </div>
             </div>
+            <ChatWidget />
         </div>
     );
 };

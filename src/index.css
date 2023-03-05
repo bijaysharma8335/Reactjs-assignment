@@ -137,3 +137,22 @@ span {
     box-shadow: 0 5px 10px rgb(0 0 0 / 0.2);
     z-index: 1;
 }
+.profile-model h4,
+.profile-model h6,
+.aside-right h4,
+.aside-right h6 {
+    color: #4a4949;
+}
+.chat-widget-container {
+    float: right;
+    width: 300px;
+    padding: 10px;
+    height: 60px;
+    background-color: rgb(14, 64, 226);
+    color: #fff;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
