@@ -50,7 +50,11 @@ const ProfileHomePage = () => {
                             Profile
                         </span>
 
-                        {activeState === "Profile" && <TbChevronRight className="icon" />}
+                        {activeState === "Profile" && (
+                            <div className="div-icon">
+                                <TbChevronRight className="icon" />
+                            </div>
+                        )}
                     </div>
                     <hr />
                     <div className="aside-list">
@@ -65,7 +69,11 @@ const ProfileHomePage = () => {
                             Posts
                         </span>
 
-                        {activeState === "Posts" && <TbChevronRight className="icon" />}
+                        {activeState === "Posts" && (
+                            <div className="div-icon">
+                                <TbChevronRight className="icon" />
+                            </div>
+                        )}
                     </div>
                     <hr />
                     <div className="aside-list">
@@ -80,7 +88,11 @@ const ProfileHomePage = () => {
                             Gallery
                         </span>
 
-                        {activeState === "Gallery" && <TbChevronRight className="icon" />}
+                        {activeState === "Gallery" && (
+                            <div className="div-icon">
+                                <TbChevronRight className="icon" />
+                            </div>
+                        )}
                     </div>
                     <hr />
                     <div className="aside-list">
@@ -94,9 +106,13 @@ const ProfileHomePage = () => {
                         >
                             ToDo
                         </span>
-                        {activeState === "ToDo" && <TbChevronRight className="icon" />}
+                        {activeState === "ToDo" && (
+                            <div className="div-icon">
+                                <TbChevronRight className="icon" />
+                            </div>
+                        )}
                     </div>
-                    <hr />
+                   
                 </div>
 
                 <div className="col-9 aside-right">
