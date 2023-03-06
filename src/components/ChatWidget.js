@@ -10,34 +10,32 @@ const ChatWidget = ({ users, show, setShow, setShowPopup }) => {
     return (
         <>
             {chatUserBox && (
-                <div className="chat-widget-container-user chat-show">
+                <div
+                    className="chat-widget-container-user chat-show"
+                    onClick={() => {
+                        setShow(false);
+                        setShowPopup(false);
+                        setChatUserBox(false);
+                    }}
+                >
                     <div className="chat-widget-header-user">
                         <div className="mt-1">
                             <img src={chatUser.profilepicture} alt="" />
                             {chatUser.name}
                         </div>
                         <div>
-                            <GoChevronDown
-                                className="me-1 mt-2"
-                                onClick={() => {
-                                    setShow(false);
-                                    setShowPopup(false);
-                                    setChatUserBox(false);
-                                }}
-                            />
+                            <GoChevronDown className="me-1 mt-2" />
                             <RxCross2 className="ms-1 mt-2" onClick={() => setChatUserBox(false)} />
                         </div>
                     </div>
 
-                    <div className="chat-widget-body-user">
+                    <div className="chat-widget-body-user cursor-pointer">
                         <p className="bg-light my-1 rounded">lorem10</p>
                         <p className="bg-light my-1 rounded">lorem10</p>
                         <p className="bg-light my-1 rounded">lorem10</p>
                         <p className="bg-light my-1 rounded">lorem10</p>
                         <p className="bg-light my-1 rounded">lorem10</p>
                         <p className="bg-light my-1 rounded">lorem10</p>
-                        <p className="bg-light my-1">lorem10</p>
-                        <p className="bg-light my-1">lorem10</p>
                     </div>
                     <div className="chat-widget-message-user">
                         <input type="text" />
