@@ -3,19 +3,21 @@ import { BsChatRight } from "react-icons/bs";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
 import { FaTelegramPlane } from "react-icons/fa";
-const ChatWidget = ({ users, show, setShow, setShowPopup }) => {
-    console.log(show);
+const ChatWidget = ({ users, show, setShow, setShowPopup, chatUserBox, setChatUserBox }) => {
     const [chatUser, setChatUser] = useState("");
-    const [chatUserBox, setChatUserBox] = useState(false);
+   
     return (
         <>
+
+        {/* {chat user popup box on botton of profile page} */}
             {chatUserBox && (
                 <div
                     className="chat-widget-container-user chat-show"
-                    onClick={() => {
+                    onClick={(e) => {
+                        e.stopPropagation()
                         setShow(false);
                         setShowPopup(false);
-                        setChatUserBox(false);
+                        setChatUserBox(true);
                     }}
                 >
                     <div className="chat-widget-header-user">
@@ -36,6 +38,9 @@ const ChatWidget = ({ users, show, setShow, setShowPopup }) => {
                         <p className="bg-light my-1 rounded">lorem10</p>
                         <p className="bg-light my-1 rounded">lorem10</p>
                         <p className="bg-light my-1 rounded">lorem10</p>
+                        <p className="bg-light my-1 rounded">lorem10</p>
+                        <p className="bg-light my-1 rounded">lorem10</p>
+                        <p className="bg-light my-1 rounded">lorem10</p>
                     </div>
                     <div className="chat-widget-message-user">
                         <input type="text" />
@@ -43,6 +48,8 @@ const ChatWidget = ({ users, show, setShow, setShowPopup }) => {
                     </div>
                 </div>
             )}
+
+            {/* { chat bot popup in bottom right of profile page} */}
             <div className={show ? "chat-widget-container chat-show" : " chat-widget-container"}>
                 <div
                     className="chat-widget-header"

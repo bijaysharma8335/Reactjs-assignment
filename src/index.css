@@ -30,7 +30,11 @@ code {
 }
 span {
     display: block;
-    /* margin: 0 10px 0 10px; */
+}
+.aside > hr {
+    width: 60%;
+    height: 2px;
+    margin: 1rem 20px !important;
 }
 .card {
     border-radius: 20px 20px 20px 20px !important;
@@ -38,10 +42,12 @@ span {
     width: 500px;
 }
 .vl {
-    border-left: 1px solid rgb(99, 103, 99);
+    border-left: 1px solid rgb(174, 179, 174);
     height: 600px;
     position: absolute;
-    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .aside {
     height: 90vh;
@@ -55,7 +61,6 @@ span {
     font-size: 30px;
 }
 .aside .aside-list > span {
-    /* display: flex; */
     font-weight: 600;
     font-size: 20px;
     line-height: 20px;
@@ -64,22 +69,10 @@ span {
 .aside div:nth-child(1) {
     margin-top: 250px;
 }
-/* .aside span .icon {
-    align-content: flex-end;
-    right: 30px;
-    border: 0;
-    color: rgb(208, 14, 14) !important;
-    font-size: 30px;
-} */
+
 .cursor-pointer {
     cursor: pointer;
 }
-/* .parentDiv {
-    display: block;
-    height: 110px;
-    width: 400px;
-    font-size: 30px;
-} */
 
 /* To set icon at the right side of the div*/
 .aside .aside-list .icon {
@@ -89,8 +82,6 @@ span {
     top: -5px;
     width: 32px;
     height: 32px;
-    /* float: right; */
-    /* padding: 10px; */
     border: 1px solid rgb(239, 234, 234);
     border-radius: 50%;
     background-color: #fff;
@@ -123,8 +114,8 @@ span {
 .posts h1,
 .gallery h1,
 .todo h1 {
-    font-weight: 600;
-    font-size: 5rem;
+    font-weight: 700;
+    font-size: 6rem;
     color: rgb(206, 200, 200);
     vertical-align: middle;
 }
@@ -139,7 +130,8 @@ span {
     position: absolute;
     padding: 10px;
     top: 10vh;
-    width: 330px;
+    height: 350px;
+    width: 250px;
     background-color: #fff;
     right: 5vw;
     border-radius: 30px 30px 30px 30px;
@@ -154,17 +146,14 @@ span {
 }
 .chat-widget-container {
     position: absolute;
-    /* height: 250px; */
     width: 255px;
     bottom: 0;
-
     float: right;
-    /* right: 11vw; */
     right: 5vw;
 }
 .chat-widget-header {
     position: absolute;
-    right: 12px;
+    right: 9px;
     top: -50px;
     float: right;
     padding: 10px;
@@ -172,7 +161,7 @@ span {
     width: 255px;
     background-color: rgb(12, 111, 240);
     color: #fff;
-    /* margin-bottom: 20px; */
+
     border-radius: 10px 10px 0 0;
     display: flex;
     justify-content: space-between;
@@ -183,9 +172,7 @@ span {
     float: right;
     overflow-y: scroll;
     padding: 10px;
-    /* display: flex; */
-    height: 200px;
-    /* justify-content: space-between; */
+    height: 193px;
     width: 255px;
     background-color: #fff;
     border: 1px solid rgb(12, 111, 240);
@@ -198,7 +185,8 @@ span {
 .chat-show {
     bottom: 0;
 }
-.chat-widget-body span img,.chat-widget-header-user img{
+.chat-widget-body span img,
+.chat-widget-header-user img {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -210,7 +198,7 @@ span {
     bottom: 250px;
 }
 .chat-widget-header-user {
-    bottom: 198px;
+    bottom: 192px;
     padding: 10px;
     position: absolute;
     height: 50px;
@@ -225,7 +213,8 @@ span {
     font-size: 18px;
 }
 .chat-widget-body-user {
-    top: 516px;
+    overflow-y: scroll;
+    bottom: 42px;
     cursor: pointer;
     position: absolute;
     float: right;
@@ -268,4 +257,9 @@ span {
     height: 10px;
     border-radius: 50%;
     background-color: gray;
+}
+
+.profile-header {
+    font-size: 18px;
+    color: #4a4949;
 }

@@ -7,37 +7,42 @@ import Gallery from "./Gallery";
 import axios from "axios";
 import ChatWidget from "./ChatWidget";
 const ProfileHomePage = () => {
+    // inbuilt hooks
     const location = useLocation();
     const navigate = useNavigate();
+
+    //useState
     const [user, setUser] = useState(location.state.user);
     const [users, setUsers] = useState([]);
 
     const [activeState, setActiveState] = useState("Profile");
     const [showPopup, setShowPopup] = useState(false);
     const [show, setShow] = useState(false);
+    const [chatUserBox, setChatUserBox] = useState(false);
 
+    //fetch data from api and update state users
     useEffect(() => {
         axios.get("https://panorbit.in/api/users.json").then((res) => {
             setUsers(res.data.users);
         });
     }, []);
 
+    //functions
+    //on click signout button navigate user to Landing Page
     const handleSignOut = () => {
         navigate("/");
     };
+
+    //on click anywhere on container all popup hides
     const handleHidePopup = () => {
         setShowPopup(false);
+        setChatUserBox(false);
         setShow(false);
     };
     return (
-        <div
-            className="container"
-            onClick={handleHidePopup}
-
-            // style={{ position: "relative" }}
-        >
+        <div className="container" onClick={handleHidePopup}>
             <div className="row mt-5">
-                <div className="col-3 aside">
+                <div className="col-2 aside">
                     <div className="aside-list ">
                         <span
                             className={
@@ -112,13 +117,12 @@ const ProfileHomePage = () => {
                             </div>
                         )}
                     </div>
-                   
                 </div>
 
-                <div className="col-9 aside-right">
+                <div className="col-10 aside-right ">
                     <div>
                         <div className="d-flex justify-content-between">
-                            <h4>{activeState}</h4>
+                            <h5 className="mt-2 fs-2 text-dark">{activeState}</h5>
                             <div
                                 className="d-flex cursor-pointer position-relative"
                                 onClick={(e) => {
@@ -138,7 +142,7 @@ const ProfileHomePage = () => {
                                         className="mx-2"
                                     />
                                 </span>
-                                <h6 className="mt-2">{user.name}</h6>
+                                <h6 className="mt-2 fs-4 text-dark">{user.name}</h6>
                             </div>
                             {showPopup && (
                                 <div className="profile-model text-center">
@@ -148,10 +152,12 @@ const ProfileHomePage = () => {
                                         width={80}
                                         height={80}
                                         style={{ borderRadius: "50%", objectFit: "cover" }}
-                                        className="mx-2 "
+                                        className="mx-2 my-3"
                                     />
-                                    <span className="fw-bold">{user.name}</span>
-                                    <span className="">{user.email}</span>
+                                    <span className=" profile-header">{user.name}</span>
+                                    <span style={{ color: "#c0b8b8", fontSize: "16px" }}>
+                                        {user.email}
+                                    </span>
                                     <hr />
                                     {users
                                         .filter((newuser) => newuser.name !== user.name)
@@ -161,6 +167,7 @@ const ProfileHomePage = () => {
                                                 <span
                                                     key={index}
                                                     className="cursor-pointer my-1"
+                                                    style={{ fontSize: "16px", color: "#4a4949" }}
                                                     onClick={() => setUser(newuser)}
                                                 >
                                                     {newuser.name}
@@ -169,7 +176,9 @@ const ProfileHomePage = () => {
                                             </>
                                         ))}
                                     <button
-                                        className="btn btn-danger rounded-pill"
+                                        type="button"
+                                        className="btn btn-danger btn-lg rounded-pill fw-bold p-2  w-50"
+                                        style={{ fontSize: "16px" }}
                                         onClick={handleSignOut}
                                     >
                                         Sign out
@@ -180,8 +189,8 @@ const ProfileHomePage = () => {
 
                         <hr />
                         {activeState === "Profile" && (
-                            <div className="row">
-                                <div className="col-6 text-center">
+                            <div className="row mt-5">
+                                <div className="col-5 text-center">
                                     <img
                                         src={user.profilepicture}
                                         alt=""
@@ -190,52 +199,148 @@ const ProfileHomePage = () => {
                                         style={{ borderRadius: "50%", objectFit: "cover" }}
                                         className="mx-auto"
                                     />
-                                    <h5 className="d-block mx-auto my-2">{user.name}</h5>
-                                    <span className="d-block ">Username:{user.username}</span>
-                                    <span className="d-block ">email:{user.email}</span>
-                                    <span className="d-block ">phone:{user.phone}</span>
-                                    <span className="d-block ">
-                                        website:
-                                        {user.website}
-                                    </span>
-                                    <hr />
-                                    <h5>Company</h5>
-                                    <span className="d-block ">Name:{user.company.name}</span>
-                                    <span className="d-block ">
-                                        catchPhrase:
-                                        {user.company.catchPhrase}
-                                    </span>
-                                    <span className="d-block ">bs:{user.company.bs}</span>
+                                    <h5 className="d-block mx-auto my-2  fs-2 text-black">
+                                        {user.name}
+                                    </h5>
+                                    <div className="container">
+                                        <div className="row">
+                                            <div
+                                                className="col-4 "
+                                                style={{ textAlign: " -webkit-right" }}
+                                            >
+                                                <span className="fs-4 text-muted ">
+                                                    &nbsp;Username &nbsp; :
+                                                </span>
+                                                <span className="fs-4 text-muted">
+                                                    &nbsp;email &nbsp; :
+                                                </span>
+                                                <span className="fs-4 text-muted">
+                                                    &nbsp;phone &nbsp; :
+                                                </span>
+                                                <span className="fs-4 text-muted">
+                                                    &nbsp;website &nbsp; :
+                                                </span>
+                                            </div>
+                                            <div className="col-8" style={{ textAlign: "left" }}>
+                                                <span className="fs-4 text-dark fw-bold">
+                                                    {user.username}
+                                                </span>
+                                                <span className="fs-4 text-dark fw-bold">
+                                                    {user.email}
+                                                </span>
+                                                <span className="fs-4 text-dark fw-bold">
+                                                    {user.phone}
+                                                </span>
+                                                <span className="fs-4 text-dark fw-bold">
+                                                    {user.website}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <h4 className="text-secondary">Company</h4>
+                                        <div className="row">
+                                            <div
+                                                className="col-4"
+                                                style={{ textAlign: " -webkit-right" }}
+                                            >
+                                                <span className="fs-4 text-muted">
+                                                    &nbsp;Name &nbsp; :
+                                                </span>
+                                                <span className="fs-4 text-muted">
+                                                    &nbsp;catchphrase &nbsp;:
+                                                </span>
+                                            </div>
+                                            <div className="col-8" style={{ textAlign: "left" }}>
+                                                <span className="fs-4 text-dark fw-bold">
+                                                    {user.company.name}
+                                                </span>
+                                                <span className="fs-4 text-dark fw-bold">
+                                                    {user.company.catchPhrase}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div
+                                                className="col-4"
+                                                style={{ textAlign: "-webkit-right" }}
+                                            >
+                                                <span className="fs-4 text-muted">
+                                                    &nbsp;bs &nbsp; :
+                                                </span>
+                                            </div>
+                                            <div className="col-8" style={{ textAlign: "left" }}>
+                                                <span className="fs-4 text-dark fw-bold">
+                                                    {user.company.bs}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                {/* <div className="vl"></div> */}
+                                <div className="col-1">
+                                    <div className="vl"></div>
+                                </div>
 
-                                <div className="col-5">
-                                    <span className="fw-bold text-secondary"> Address:</span>
-                                    <span>
-                                        street:<h6>{user.address.street}</h6>
-                                    </span>
-                                    <span>
-                                        suite:<h6>{user.address.suite}</h6>
-                                    </span>
-                                    <span>
-                                        City:<h6>{user.address.city}</h6>
-                                    </span>
-                                    <span>
-                                        Zipcode:<h6>{user.address.zipcode}</h6>
-                                    </span>
-                                    <iframe
-                                        src={`https://maps.google.com/maps?q=' +${user.address.geo.lat} + ',' +${user.address.geo.lng}+'&t=&z=15&ie=UTF8&iwloc=&output=embed`}
-                                    />
-                                    Lat:{user.address.geo.lat} Long:
-                                    {user.address.geo.lng}
-                                    {/* <iframe
-                                src="https://maps.google.com/maps?q='+YOUR_LAT+','+YOUR_LON+'&hl=en&z=14&amp;output=embed"
-                                width="100%"
-                                height="400"
-                                frameborder="0"
-                                style="border:0"
-                                allowfullscreen
-                            ></iframe> */}
+                                <div className="col-6">
+                                    <div className="row">
+                                        {" "}
+                                        <span className=" fs-3 text-secondary "> Address:</span>
+                                    </div>
+                                    <div className="row">
+                                        <div
+                                            className="col-4"
+                                            style={{ textAlign: " -webkit-right" }}
+                                        >
+                                            <span className="fs-4 text-muted">
+                                                &nbsp; Street &nbsp; :
+                                            </span>
+                                            <span className="fs-4 text-muted">
+                                                &nbsp; Suite &nbsp; :
+                                            </span>
+                                            <span className="fs-4 text-muted">
+                                                &nbsp; City &nbsp; :
+                                            </span>
+                                            <span className="fs-4 text-muted">
+                                                &nbsp; Zipcode &nbsp; :
+                                            </span>
+                                        </div>
+                                        <div className="col-8" style={{ textAlign: "left" }}>
+                                            <span className="fs-4 text-dark fw-bold">
+                                                {user.address.street}
+                                            </span>
+                                            <span className="fs-4 text-dark fw-bold">
+                                                {user.address.suite}
+                                            </span>
+                                            <span className="fs-4 text-dark fw-bold">
+                                                {user.address.city}
+                                            </span>
+                                            <span className="fs-4 text-dark fw-bold">
+                                                {user.address.street}
+                                            </span>
+                                            <span className="fs-4 text-dark fw-bold">
+                                                {user.address.zipcode}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div className="row">
+                                        <iframe
+                                            src={`https://maps.google.com/maps?q=' +${user.address.geo.lat} + ',' +${user.address.geo.lng}+'&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                                            style={{ borderRadius: "20px", height: "300px" }}
+                                        />
+                                    </div>
+                                    <div className="d-flex justify-content-end my-2">
+                                        <div className="fs-5 text-muted d-flex">
+                                            &nbsp; Lat :{" "}
+                                            <span className="fw-bold">{user.address.geo.lat}</span>
+                                            &nbsp;
+                                        </div>
+                                        <div className="fs-5 text-muted d-flex">
+                                            &nbsp; Long :
+                                            <span className="fw-bold">
+                                                &nbsp;{user.address.geo.lng}
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         )}
@@ -246,12 +351,16 @@ const ProfileHomePage = () => {
                     {activeState === "Gallery" && <Gallery />}
                 </div>
             </div>
+
+            {/* {  display chat widget in row and fixed at bottom of profile page} */}
             <div className="row">
                 <ChatWidget
                     users={users}
                     show={show}
                     setShow={setShow}
                     setShowPopup={setShowPopup}
+                    chatUserBox={chatUserBox}
+                    setChatUserBox={setChatUserBox}
                 />
             </div>
         </div>
