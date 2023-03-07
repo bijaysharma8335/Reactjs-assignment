@@ -5,16 +5,14 @@ import { RxCross2 } from "react-icons/rx";
 import { FaTelegramPlane } from "react-icons/fa";
 const ChatWidget = ({ users, show, setShow, setShowPopup, chatUserBox, setChatUserBox }) => {
     const [chatUser, setChatUser] = useState("");
-   
     return (
         <>
-
-        {/* {chat user popup box on botton of profile page} */}
+            {/* {chat user popup box on botton of profile page} */}
             {chatUserBox && (
                 <div
                     className="chat-widget-container-user chat-show"
                     onClick={(e) => {
-                        e.stopPropagation()
+                        e.stopPropagation();
                         setShow(false);
                         setShowPopup(false);
                         setChatUserBox(true);
@@ -32,15 +30,27 @@ const ChatWidget = ({ users, show, setShow, setShowPopup, chatUserBox, setChatUs
                     </div>
 
                     <div className="chat-widget-body-user cursor-pointer">
-                        <p className="bg-light my-1 rounded">lorem10</p>
-                        <p className="bg-light my-1 rounded">lorem10</p>
-                        <p className="bg-light my-1 rounded">lorem10</p>
-                        <p className="bg-light my-1 rounded">lorem10</p>
-                        <p className="bg-light my-1 rounded">lorem10</p>
-                        <p className="bg-light my-1 rounded">lorem10</p>
-                        <p className="bg-light my-1 rounded">lorem10</p>
-                        <p className="bg-light my-1 rounded">lorem10</p>
-                        <p className="bg-light my-1 rounded">lorem10</p>
+                        <div className="chat-background my-2 rounded mx-4 p-2">
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                        </div>
+                        <div className="chat-background my-2 rounded mx-4 p-2 ">
+                            Lorem ipsum dolor sit
+                        </div>
+                        <span className='text-center' >9:16 PM</span>
+                        <div className="d-flex flex-column justify-content-end">
+                            <div className="chat-background my-1 rounded mx-4 p-2 ">
+                                Lorem ipsum dolor
+                            </div>
+                            <div className="chat-background my-1 rounded mx-4 p-2">
+                                Lorem ipsum dolor
+                            </div>
+                            <div className="chat-background my-1 rounded mx-4 p-2">
+                                Lorem ipsum dolor
+                            </div>
+                            <div className="chat-background my-1 rounded mx-4 p-2">
+                                Lorem ipsum dolor
+                            </div>
+                        </div>
                     </div>
                     <div className="chat-widget-message-user">
                         <input type="text" />

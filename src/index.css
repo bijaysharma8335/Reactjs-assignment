@@ -149,15 +149,17 @@ hr {
 .todo h1 {
     font-weight: 700;
     font-size: 6rem;
-    color:#EEEEEE;
+    color: #eeeeee;
     vertical-align: middle;
 }
-
+.chat-background {
+    background-color: #f1f1f1;
+}
 .active {
     color: #fff;
 }
 .inactive {
-    color:#9696DF;
+    color: #9696df;
 }
 .profile-model {
     position: absolute;
@@ -173,6 +175,11 @@ hr {
 }
 .profile-model > hr {
     margin: 1rem 25px !important;
+}
+
+.profile-middle-hr {
+    /* margin: unset; */
+    margin: 1rem 12px !important;
 }
 .profile-model h4,
 .profile-model h6,
@@ -208,7 +215,7 @@ hr {
     float: right;
     overflow-y: scroll;
     padding: 10px;
-    height: 193px;
+    height: 245px;
     width: 255px;
     background-color: #fff;
     border: 1px solid #2c65c8;

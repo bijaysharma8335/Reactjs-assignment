@@ -111,8 +111,8 @@ const ProfileHomePage = () => {
                     </div>
                 </div>
 
-                <div className="col-10 aside-right "> 
-                    <div className='ms-4'>
+                <div className="col-10 aside-right ">
+                    <div className="ms-4">
                         <div className="d-flex justify-content-between ">
                             <h5 className="mt-2  fs-2 text-dark">{activeState}</h5>
                             <div
@@ -190,7 +190,7 @@ const ProfileHomePage = () => {
                             )}
                         </div>
 
-                        <hr  />
+                        <hr />
                         {activeState === "Profile" && (
                             <div className="row mt-5 aside-right-bottom">
                                 <div className="col-5  ">
@@ -252,7 +252,7 @@ const ProfileHomePage = () => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <hr />
+                                        <hr className="profile-middle-hr" />
                                         <h4
                                             className="text-secondary d-block  "
                                             style={{ margin: "0 102px" }}
