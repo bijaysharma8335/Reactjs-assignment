@@ -4,7 +4,6 @@ import { TbChevronRight } from "react-icons/tb";
 import ToDo from "./ToDo";
 import Posts from "./Posts";
 import Gallery from "./Gallery";
-import axios from "axios";
 import ChatWidget from "./ChatWidget";
 const ProfileHomePage = () => {
     // inbuilt hooks
@@ -13,19 +12,12 @@ const ProfileHomePage = () => {
 
     //useState
     const [user, setUser] = useState(location.state.user);
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState(location.state.users);
 
     const [activeState, setActiveState] = useState("Profile");
     const [showPopup, setShowPopup] = useState(false);
     const [show, setShow] = useState(false);
     const [chatUserBox, setChatUserBox] = useState(false);
-
-    //fetch data from api and update state users
-    useEffect(() => {
-        axios.get("https://panorbit.in/api/users.json").then((res) => {
-            setUsers(res.data.users);
-        });
-    }, []);
 
     //functions
     //on click signout button navigate user to Landing Page
@@ -119,10 +111,10 @@ const ProfileHomePage = () => {
                     </div>
                 </div>
 
-                <div className="col-10 aside-right ">
-                    <div>
-                        <div className="d-flex justify-content-between">
-                            <h5 className="mt-2 fs-2 text-dark">{activeState}</h5>
+                <div className="col-10 aside-right "> 
+                    <div className='ms-4'>
+                        <div className="d-flex justify-content-between ">
+                            <h5 className="mt-2  fs-2 text-dark">{activeState}</h5>
                             <div
                                 className="d-flex cursor-pointer position-relative"
                                 onClick={(e) => {
@@ -132,7 +124,6 @@ const ProfileHomePage = () => {
                                 }}
                             >
                                 <span>
-                                    {" "}
                                     <img
                                         src={user.profilepicture}
                                         alt=""
@@ -154,31 +145,43 @@ const ProfileHomePage = () => {
                                         style={{ borderRadius: "50%", objectFit: "cover" }}
                                         className="mx-2 my-3"
                                     />
-                                    <span className=" profile-header">{user.name}</span>
+                                    <h6 className="mt-2 fs-4 text-dark">{user.name}</h6>
                                     <span style={{ color: "#c0b8b8", fontSize: "16px" }}>
                                         {user.email}
                                     </span>
-                                    <hr />
+
                                     {users
                                         .filter((newuser) => newuser.name !== user.name)
                                         .slice(0, 2)
                                         .map((newuser, index) => (
                                             <>
-                                                <span
+                                                <hr />
+                                                <div
                                                     key={index}
-                                                    className="cursor-pointer my-1"
+                                                    className="cursor-pointer my-1 d-flex justify-content-center"
                                                     style={{ fontSize: "16px", color: "#4a4949" }}
                                                     onClick={() => setUser(newuser)}
                                                 >
-                                                    {newuser.name}
-                                                </span>
-                                                <hr />
+                                                    <img
+                                                        src={newuser.profilepicture}
+                                                        alt=""
+                                                        width={30}
+                                                        height={30}
+                                                        style={{
+                                                            borderRadius: "50%",
+                                                            objectFit: "cover",
+                                                        }}
+                                                        className="mx-2"
+                                                    />
+                                                    <span>{newuser.name}</span>
+                                                </div>
                                             </>
                                         ))}
+
                                     <button
                                         type="button"
-                                        className="btn btn-danger btn-lg rounded-pill fw-bold p-2  w-50"
-                                        style={{ fontSize: "16px" }}
+                                        className="btn btn-danger  rounded-pill fw-bold p-2 mx-2  mt-4"
+                                        style={{ fontSize: "15px", width: "90px" }}
                                         onClick={handleSignOut}
                                     >
                                         Sign out
@@ -187,26 +190,36 @@ const ProfileHomePage = () => {
                             )}
                         </div>
 
-                        <hr />
+                        <hr  />
                         {activeState === "Profile" && (
-                            <div className="row mt-5">
-                                <div className="col-5 text-center">
-                                    <img
-                                        src={user.profilepicture}
-                                        alt=""
-                                        width={180}
-                                        height={180}
-                                        style={{ borderRadius: "50%", objectFit: "cover" }}
-                                        className="mx-auto"
-                                    />
-                                    <h5 className="d-block mx-auto my-2  fs-2 text-black">
-                                        {user.name}
-                                    </h5>
-                                    <div className="container">
+                            <div className="row mt-5 aside-right-bottom">
+                                <div className="col-5  ">
+                                    {" "}
+                                    <div className="container ">
+                                        <div style={{ margin: "0 60px" }}>
+                                            <img
+                                                src={user.profilepicture}
+                                                alt=""
+                                                width={190}
+                                                height={190}
+                                                style={{ borderRadius: "50%", objectFit: "cover" }}
+                                            />
+                                        </div>
+
+                                        <h5
+                                            className="d-block  my-2  fs-2 text-black "
+                                            style={{ margin: "0 80px" }}
+                                        >
+                                            {user.name}
+                                        </h5>
+
                                         <div className="row">
                                             <div
                                                 className="col-4 "
-                                                style={{ textAlign: " -webkit-right" }}
+                                                style={{
+                                                    textAlign: " -webkit-right",
+                                                    lineHeight: "1.8",
+                                                }}
                                             >
                                                 <span className="fs-4 text-muted ">
                                                     &nbsp;Username &nbsp; :
@@ -221,7 +234,10 @@ const ProfileHomePage = () => {
                                                     &nbsp;website &nbsp; :
                                                 </span>
                                             </div>
-                                            <div className="col-8" style={{ textAlign: "left" }}>
+                                            <div
+                                                className="col-8"
+                                                style={{ textAlign: "left", lineHeight: "1.8" }}
+                                            >
                                                 <span className="fs-4 text-dark fw-bold">
                                                     {user.username}
                                                 </span>
@@ -237,11 +253,19 @@ const ProfileHomePage = () => {
                                             </div>
                                         </div>
                                         <hr />
-                                        <h4 className="text-secondary">Company</h4>
+                                        <h4
+                                            className="text-secondary d-block  "
+                                            style={{ margin: "0 102px" }}
+                                        >
+                                            Company
+                                        </h4>
                                         <div className="row">
                                             <div
                                                 className="col-4"
-                                                style={{ textAlign: " -webkit-right" }}
+                                                style={{
+                                                    textAlign: " -webkit-right",
+                                                    lineHeight: "1.8",
+                                                }}
                                             >
                                                 <span className="fs-4 text-muted">
                                                     &nbsp;Name &nbsp; :
@@ -250,7 +274,10 @@ const ProfileHomePage = () => {
                                                     &nbsp;catchphrase &nbsp;:
                                                 </span>
                                             </div>
-                                            <div className="col-8" style={{ textAlign: "left" }}>
+                                            <div
+                                                className="col-8"
+                                                style={{ textAlign: "left", lineHeight: "1.8" }}
+                                            >
                                                 <span className="fs-4 text-dark fw-bold">
                                                     {user.company.name}
                                                 </span>
@@ -322,7 +349,7 @@ const ProfileHomePage = () => {
                                         </div>
                                     </div>
 
-                                    <div className="row">
+                                    <div className="row mt-2">
                                         <iframe
                                             src={`https://maps.google.com/maps?q=' +${user.address.geo.lat} + ',' +${user.address.geo.lng}+'&t=&z=15&ie=UTF8&iwloc=&output=embed`}
                                             style={{ borderRadius: "20px", height: "300px" }}
