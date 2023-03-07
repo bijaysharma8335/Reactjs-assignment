@@ -3,6 +3,7 @@ import { BsChatRight } from "react-icons/bs";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
 import { FaTelegramPlane } from "react-icons/fa";
+
 const ChatWidget = ({ users, show, setShow, setShowPopup, chatUserBox, setChatUserBox }) => {
     const [chatUser, setChatUser] = useState("");
     return (
@@ -29,6 +30,7 @@ const ChatWidget = ({ users, show, setShow, setShowPopup, chatUserBox, setChatUs
                         </div>
                     </div>
 
+                    {/* chat container */}
                     <div className="chat-widget-body-user cursor-pointer">
                         <div className="chat-background my-2 rounded mx-4 p-2">
                             Lorem ipsum dolor sit amet consectetur adipisicing
@@ -36,7 +38,7 @@ const ChatWidget = ({ users, show, setShow, setShowPopup, chatUserBox, setChatUs
                         <div className="chat-background my-2 rounded mx-4 p-2 ">
                             Lorem ipsum dolor sit
                         </div>
-                        <span className='text-center' >9:16 PM</span>
+                        <span className="text-center">9:16 PM</span>
                         <div className="d-flex flex-column justify-content-end">
                             <div className="chat-background my-1 rounded mx-4 p-2 ">
                                 Lorem ipsum dolor
@@ -79,6 +81,9 @@ const ChatWidget = ({ users, show, setShow, setShowPopup, chatUserBox, setChatUs
                         <GoChevronUp className="me-2 mt-2" />
                     )}
                 </div>
+
+
+                
                 {show && (
                     <div className="chat-widget-body">
                         {users.map((user, index) => (

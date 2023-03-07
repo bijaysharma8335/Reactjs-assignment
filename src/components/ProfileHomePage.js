@@ -19,7 +19,7 @@ const ProfileHomePage = () => {
     const [show, setShow] = useState(false);
     const [chatUserBox, setChatUserBox] = useState(false);
 
-    //functions
+    // handler functions
     //on click signout button navigate user to Landing Page
     const handleSignOut = () => {
         navigate("/");
@@ -31,6 +31,7 @@ const ProfileHomePage = () => {
         setChatUserBox(false);
         setShow(false);
     };
+
     return (
         <div className="container" onClick={handleHidePopup}>
             <div className="row mt-5">
@@ -135,6 +136,8 @@ const ProfileHomePage = () => {
                                 </span>
                                 <h6 className="mt-2 fs-4 text-dark">{user.name}</h6>
                             </div>
+
+                            {/*  profile popup  on click of profile pic or user name on top right */}
                             {showPopup && (
                                 <div className="profile-model text-center">
                                     <img
@@ -191,6 +194,7 @@ const ProfileHomePage = () => {
                         </div>
 
                         <hr />
+
                         {activeState === "Profile" && (
                             <div className="row mt-5 aside-right-bottom">
                                 <div className="col-5  ">

@@ -28,23 +28,23 @@ code {
 span {
     display: block;
 }
-.landingpage-container {
-    background-image: linear-gradient(#08066e, rgb(130 90 218), white);
-    z-index: 1;
-    height: 100vh;
-    position: relative;
-}
-.aside > hr {
-    width: 60%;
-    height: 2px;
-    margin: 1rem 20px !important;
-}
+
 hr {
     color: 2px solid rgb(213, 221, 213);
 }
+
 .container {
     max-height: 100vh;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}
+.btn-danger {
+    background-color: #d55151;
+}
+
+/* card  css */
 .card {
     position: absolute;
     border-radius: 20px 20px 20px 20px !important;
@@ -70,14 +70,17 @@ hr {
     padding: unset !important;
     background-color: unset !important;
 }
-.vl {
-    border-left: 2px solid rgb(213, 221, 213);
-    height: 500px;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+/* ----------------------landing  page css starts --------------------*/
+.landingpage-container {
+    background-image: linear-gradient(#08066e, rgb(130 90 218), white);
+    z-index: 1;
+    height: 100vh;
+    position: relative;
 }
+/* ----------------------landing  page css ends---------------------- */
+
+/*---------------------- profile page css starts---------------------------- */
 .aside {
     height: 90vh;
     background-color: #4252c8;
@@ -89,6 +92,11 @@ hr {
     width: 400px;
     font-size: 30px;
 }
+.aside > hr {
+    width: 60%;
+    height: 2px;
+    margin: 1rem 20px !important;
+}
 .aside .aside-list > span {
     font-weight: 600;
     font-size: 20px;
@@ -99,13 +107,8 @@ hr {
     margin-top: 250px;
 }
 
-.cursor-pointer {
-    cursor: pointer;
-}
-
 /* To set icon at the right side of the div*/
 .aside .aside-list .icon {
-    /* position: absolute; */
     margin-left: 10px;
     right: -15px;
     top: -5px;
@@ -123,7 +126,6 @@ hr {
 .aside-right-bottom > hr {
     margin: 1rem 25px !important;
 }
-
 .div-icon {
     top: -14px;
     right: -75px;
@@ -132,35 +134,18 @@ hr {
     height: 50px;
     border-radius: 50%;
     background-color: #fff;
-    /* clip-path: polygon(56% 0%, 131% 50%, 50% 100%, 0% 50%); */
     z-index: 1;
 }
-.posts,
-.gallery,
-.todo {
-    height: 80vh;
+
+.vl {
+    border-left: 2px solid rgb(213, 221, 213);
+    height: 500px;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.posts h1,
-.gallery h1,
-.todo h1 {
-    font-weight: 700;
-    font-size: 6rem;
-    color: #eeeeee;
-    vertical-align: middle;
-}
-.chat-background {
-    background-color: #f1f1f1;
-}
-.active {
-    color: #fff;
-}
-.inactive {
-    color: #9696df;
-}
 .profile-model {
     position: absolute;
     padding: 10px;
@@ -178,7 +163,6 @@ hr {
 }
 
 .profile-middle-hr {
-    /* margin: unset; */
     margin: 1rem 12px !important;
 }
 .profile-model h4,
@@ -187,6 +171,34 @@ hr {
 .aside-right h6 {
     color: #4a4949;
 }
+
+.profile-header {
+    font-size: 18px;
+    color: #4a4949;
+}
+
+/*---------------------- profile page css ends---------------------------- */
+
+/* ----------------------posts ,gallery and toDo page css starts ----------*/
+.posts,
+.gallery,
+.todo {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.posts h1,
+.gallery h1,
+.todo h1 {
+    font-weight: 700;
+    font-size: 6rem;
+    color: #eeeeee;
+    vertical-align: middle;
+}
+/* ----------------------posts ,gallery and toDo page css ends ----------*/
+/*---------------------- chat bot css starts--------------------------------- */
 .chat-widget-container {
     position: absolute;
     width: 255px;
@@ -301,11 +313,13 @@ hr {
     border-radius: 50%;
     background-color: gray;
 }
-
-.profile-header {
-    font-size: 18px;
-    color: #4a4949;
+.chat-background {
+    background-color: #f1f1f1;
 }
-.btn-danger {
-    background-color: #d55151;
+.active {
+    color: #fff;
 }
+.inactive {
+    color: #9696df;
+}
+/*---------------------- chat bot css ends--------------------------------- */
